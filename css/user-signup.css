@@ -1,0 +1,470 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo {
+    /* height: 20px; */
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: #49c7ed; */
+}
+
+.logo-img {
+    display: flex;
+}
+
+.logo img {
+    height: 40px;
+    width: 90px;
+}
+
+.logo-img>p {
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    font-weight: bolder;
+    font-size: 25px;
+    font-style: italic;
+    /* margin-right: 10px; */
+}
+
+.logo-contacts {
+    display: inline-block;
+    display: flex;
+    margin-left: 40px;
+}
+
+.logo-contacts p {
+    margin-left: 20px;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: linear-gradient(95deg,
+            hsl(206.3, 46.5%, 69.22%),
+            hsl(225.82, 22.45%, 48.04%),
+            hsl(229.2, 26.04%, 37.65%),
+            hsl(206.3, 46.5%, 69.22%));
+    /* margin-bottom: 30px; */
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.nav-bar>button {
+    padding: 12px 28px;
+    border: 2px solid black;
+    outline-width: 0;
+    color: white;
+    border-radius: 22px;
+    cursor: pointer;
+    font-weight: 500;
+    background-image: linear-gradient(120deg,
+            hsl(206.3, 46.5%, 69.22%),
+            hsl(225.82, 22.45%, 48.04%));
+}
+.nav-bar button:hover{
+    background: linear-gradient(105deg,
+            
+            hsl(225.82, 22.45%, 48.04%),
+            hsl(206.3, 46.5%, 69.22%));
+
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* background-color: #38444d; */
+}
+
+li {
+    float: left;
+}
+
+li a,
+.dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a {
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    font-style: normal;
+}
+
+li a:hover,
+.dropdown:hover .dropbtn {
+    /* color: white; */
+    background-color: #142340;
+}
+
+
+li.dropdown {
+    display: inline-block;
+    /* background-color: #cfb1bb; */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fcfeff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    color: black;
+    /* transition: 5s; */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #142340;
+    color: whitesmoke;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.banner {
+    /* padding-top: 30px; */
+    display: flex;
+    background: url('../img/back-6.jpg');
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.banner-box {
+    padding: 1em;
+    background: rgb(51, 50, 50, 0.5);
+    height: 95%;
+    width: 80%;
+    /* display: flex; */
+    /* align-items: flex-start; */
+}
+.banner-box-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.banner-box-container h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 50px;
+    text-decoration: underline;
+    color: #f6c086;
+}
+
+.banner-box p {
+    width: 43%;
+    color: white;
+    font-size: 1.2em;
+}
+
+.banner-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.banner-text-container h2 {
+    font-weight: 200;
+    margin-bottom: 20px;
+    color: white;
+    line-height: 1.1;
+}
+.typewriter{
+    margin-bottom: 20px;
+}
+.typewriter h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+    /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid white;
+    /* The typwriter cursor */
+    white-space: nowrap;
+    /* Keeps the content on a single line */
+    margin: 0 auto;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-style: italic;
+    text-decoration:underline;
+    /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .05em;
+
+    /* Adjust as needed */
+    color: whitesmoke;
+    animation:
+        typing1 7s steps(40, end),
+        blink-caret 2.5s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing1 {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: transparent;
+    }
+}
+
+.form-box {
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    width: 1000px;
+    height: 525px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+
+}
+
+/* .form-box:hover{
+    background-color: #54a629;
+    color: black;
+} */
+
+h2 {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+}
+
+.inputbox {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    margin: 30px 10px;
+    /* width: 310px; */
+    border: 2px solid #fff;
+    border-radius: 20px;
+}
+
+.inputbox label {
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1em;
+    pointer-events: none;
+    transition: .5s;
+}
+
+input:focus~label,
+input:valid~label {
+    top: -10px;
+}
+
+#select {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    margin: 30px 10px;
+    height: 40px;
+    width: 300px;
+    /* width: 310px; */
+    border: 2px solid #fff;
+    border-radius: 20px;
+}
+
+#select option {
+    color: black;
+    
+}
+
+.inputbox input {
+    width: 300px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 15px;
+    color: #fff;
+
+
+}
+
+.inputbox ion-icon {
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2em;
+    top: 20px;
+}
+
+.forget {
+    margin: -15px 0 15px;
+    font-size: .9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.forget label input {
+    margin-right: 3px;
+}
+
+.forget label a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.forget label a:hover {
+    text-decoration: underline;
+}
+
+.form-value {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.form-box button {
+    width: 50%;
+    height: 40px;
+    border-radius: 40px;
+    background: #f6c086;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 900;
+    margin-left: 70px;
+}
+
+.form-box button:hover {
+    background-color: #142340;
+    color: white;
+}
+
+.register {
+    font-size: .9em;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.register p a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.register p a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    background-color: hsl(220, 16%, 96%);
+}
+
+.footer {
+    border-top: 10px solid black;
+    background: linear-gradient(109deg,
+            hsl(206.3, 46.5%, 69.22%),
+            hsl(225.82, 22.45%, 48.04%),
+            hsl(229.2, 26.04%, 37.65%),
+            hsl(206.3, 46.5%, 69.22%));
+    height: 30vh;
+    border-bottom: 10px solid black;
+}
+
+.footer-container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 2rem;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.social-container {
+    margin-top: 3rem;
+}
+
+.social-container img {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.footer-container button {
+    margin-top: 3rem;
+    padding: 12px 28px;
+    border: 2px solid black;
+    outline-width: 0;
+    color: white;
+    border-radius: 22px;
+    cursor: pointer;
+    font-weight: 500;
+    background-image: linear-gradient(120deg,
+            hsl(206.3, 46.5%, 69.22%),
+            hsl(225.82, 22.45%, 48.04%));
+}
