@@ -139,230 +139,38 @@ li.dropdown {
     display: block;
 }
 
-.banner {
+#middle-container {
+
+    /* background-color: #003251; */
+    padding-bottom: 20px;
+
+}
+
+.middle-container-1 img {
+    width: 30%;
+    height: 30%;
+}
+
+.row {
+    margin-left: 180px;
     display: flex;
-    background: url('../img/back-6.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 0 4px;
 }
 
-.banner-box {
-    padding: 4em;
-    background: rgba(0, 0, 0, 0.72);
-    height: 80%;
-    width: 80%;
-    display: flex;
-    align-items: flex-start;
+/* Create two equal columns that sits next to each other */
+.middle-container-1 {
+
+    flex: 50%;
+    padding: 0 4px;
 }
 
-.banner-box p {
-    width: 43%;
-    color: white;
-    font-size: 1.2em;
+.middle-container-1 img {
+    margin-top: 8px;
+    vertical-align: top;
+    padding: 10px 10px;
 }
 
-.banner-text-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: flex-start;
-}
-
-.banner-text-container h2 {
-    font-weight: 800;
-    margin-bottom: 20px;
-    color: white;
-    line-height: 1.1;
-}
-
-.wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.wrapper .static-txt {
-    color: #fff;
-    font-size: 40px;
-    font-weight: 400;
-}
-
-.wrapper .dynamic-txts {
-    margin-left: 15px;
-    line-height: 90px;
-    height: 90px;
-    overflow: hidden;
-
-}
-
-.dynamic-txts li {
-    list-style: none;
-    color: rgb(252, 209, 131);
-    font-size: 60px;
-    font-weight: 500;
-    position: relative;
-    top: 0;
-    animation: slide 15s steps(4) infinite;
-}
-
-@keyframes slide {
-    100% {
-        top: -360px;
-    }
-}
-
-.dynamic-txts li {
-    position: relative;
-}
-
-.dynamic-txts li ::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    animation: typing 15s steps(12) infinite;
-}
-
-@keyframes typing {
-
-    40%,
-    60% {
-        left: calc(100% + 30px);
-    }
-
-    100% {
-        left: 0;
-    }
-}
-
-.form-box {
-    position: relative;
-    width: 800px;
-    height: 450px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    backdrop-filter: blur(15px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.form-box:hover {
-    background-color: #54a629;
-    color: black;
-}
-
-h2 {
-    font-size: 2em;
-    color: #fff;
-    text-align: center;
-}
-
-.inputbox {
-    position: relative;
-    margin: 30px 0;
-    width: 310px;
-    border-bottom: 2px solid #fff;
-}
-
-.inputbox label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    color: #fff;
-    font-size: 1em;
-    pointer-events: none;
-    transition: .5s;
-}
-
-input:focus~label,
-input:valid~label {
-    top: -15px;
-}
-
-.inputbox input {
-    width: 310px;
-    height: 50px;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1em;
-    color: #fff;
-}
-
-.inputbox ion-icon {
-    position: absolute;
-    right: 8px;
-    color: #fff;
-    font-size: 1.2em;
-    top: 20px;
-}
-
-.forget {
-    margin: -15px 0 15px;
-    font-size: .9em;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-}
-
-.forget label input {
-    margin-right: 3px;
-
-}
-
-.forget label a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.forget label a:hover {
-    text-decoration: underline;
-}
-
-.form-value button {
-    width: 100%;
-    height: 40px;
-    border-radius: 40px;
-    background: #cfb1bb;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 600;
-    padding: 10px 0;
-
-}
-
-.form-value button:hover {
-    background-color: #142340;
-    color: white;
-}
-
-.register {
-    font-size: .9em;
-    color: #fff;
-    text-align: center;
-    margin: 25px 0 10px;
-}
-
-.register p a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-}
-
-.register p a:hover {
-    text-decoration: underline;
-}
 
 .footer {
     border-top: 10px solid black;

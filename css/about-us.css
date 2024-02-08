@@ -5,16 +5,14 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .logo {
-    /* height: 20px; */
     margin: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* background-color: #49c7ed; */
 }
 
 .logo-img {
@@ -27,11 +25,9 @@ body {
 }
 
 .logo-img>p {
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     font-weight: bolder;
-    font-size: 25px;
+    font-size: 29px;
     font-style: italic;
-    /* margin-right: 10px; */
 }
 
 .logo-contacts {
@@ -55,17 +51,9 @@ body {
             hsl(225.82, 22.45%, 48.04%),
             hsl(229.2, 26.04%, 37.65%),
             hsl(206.3, 46.5%, 69.22%));
-    /* margin-bottom: 30px; */
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
-
-/* .nav-items>a {
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: hsl(233, 8%, 62%);
-    margin-left: 10px;
-} */
 
 .nav-bar>button {
     padding: 12px 28px;
@@ -82,10 +70,8 @@ body {
 
 .nav-bar button:hover {
     background: linear-gradient(105deg,
-
             hsl(225.82, 22.45%, 48.04%),
             hsl(206.3, 46.5%, 69.22%));
-
 }
 
 
@@ -93,9 +79,7 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    /* background-color: #38444d; */
-}
+    overflow: hidden;}
 
 li {
     float: left;
@@ -112,20 +96,17 @@ li a,
 
 li a {
     font-size: 18px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
     font-style: normal;
 }
 
 li a:hover,
 .dropdown:hover .dropbtn {
-    /* color: white; */
     background-color: #142340;
 }
 
 li.dropdown {
     display: inline-block;
-    /* background-color: #cfb1bb; */
 }
 
 .dropdown-content {
@@ -136,7 +117,6 @@ li.dropdown {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     color: black;
-    /* transition: 5s; */
 }
 
 .dropdown-content a {
@@ -172,7 +152,6 @@ li.dropdown {
 .about-info h1 {
     margin: 30px 0;
     font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: 800;
     text-decoration: underline;
 
@@ -201,16 +180,18 @@ li.dropdown {
     align-items: flex-start;
     margin-bottom: 50px;
 }
-.our-team{
-    margin: 50px 0 ;
+
+.our-team {
+    margin: 50px 0;
     padding: 0 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: flex-start;
     margin-bottom: 50px;
-    
+
 }
+
 .team {
     position: relative;
     width: 50%;
