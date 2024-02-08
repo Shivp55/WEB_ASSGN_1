@@ -1,13 +1,16 @@
+/* setting the initial margin and padding of body to zero */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
+/* declaring the universal font as poppins */
 body {
     font-family: 'Poppins', sans-serif;
 }
 
+/* Upper navbar design containing the logo and the contact information */
+/* Using display property flex to row direction to align content in a horizontal pane */
 .logo {
     margin: 20px;
     display: flex;
@@ -18,7 +21,7 @@ body {
 .logo-img {
     display: flex;
 }
-
+/* Setting height and width of logo */
 .logo img {
     height: 40px;
     width: 90px;
@@ -40,6 +43,7 @@ body {
     margin-left: 20px;
 }
 
+/* Lower navbar design */
 .nav-bar {
     display: flex;
     justify-content: space-around;
@@ -54,7 +58,7 @@ body {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
-
+/* navigation bar button dropdown */
 .nav-bar>button {
     padding: 12px 28px;
     border: 2px solid black;
@@ -136,6 +140,7 @@ li.dropdown {
     display: block;
 }
 
+/* Setting background of the 1st section */
 .banner {
     display: flex;
     background: url('../img/back-6.jpg');
@@ -146,15 +151,37 @@ li.dropdown {
 }
 
 .about-info {
-    margin-top: 40px;
+    margin: 4%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+.phone-img img{
+    height: 300px;
+    width: 500px;
 }
 
-.about-info h1 {
-    margin: 30px 0;
-    font-size: 30px;
-    font-weight: 800;
-    text-decoration: underline;
-
+.about-info-text{
+    height: 300px;
+}
+.investment-options{
+    margin: 20px 20px 20px;
+    font-size: 20px;
+}
+.investment-options ul li{
+    margin-top: 15px;
+}
+.investment-options ul{
+    list-style:disc;
+}
+.investment-options ul li>p{
+    font-size: 900;
+    font-weight: 500;
+}
+.options p{
+    ont-size: 900;
+    font-weight: 400;
 }
 
 .banner-2 {
@@ -181,6 +208,7 @@ li.dropdown {
     margin-bottom: 50px;
 }
 
+/* displaying the team images  */
 .our-team {
     margin: 50px 0;
     padding: 0 50px;
@@ -233,6 +261,7 @@ li.dropdown {
     -ms-transform: translate(-50%, -50%);
 }
 
+/* footersection */
 .footer {
     border-top: 10px solid black;
     border-bottom: 10px solid black;
