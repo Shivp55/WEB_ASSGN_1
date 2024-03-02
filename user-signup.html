@@ -24,6 +24,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="./js/localStorage.js"></script>
     <script src="js\datatables\jquery.dataTables.min.js"></script>
+    <script src="js\table.js"></script>
     <!-- Title of the page -->
     <title>Customer SignUp</title>
     <script>
@@ -121,7 +122,7 @@
                 document.getElementById('addr').style.borderColor = "green"
             }
             ValidateEmail();
-            
+
             alert("All fields are valid");
             storeData();
         }
@@ -162,7 +163,7 @@
                 'password': password.value,
                 'phone': phone.value,
                 'address': address.value,
-                'date': date.value,
+                'date': dt.value,
                 'accnt': accnt.value
             }
 
@@ -170,11 +171,31 @@
                 if (sessionStorage.clickcount) {
                     sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
                     localStorage.setItem("user(" + sessionStorage.clickcount + ")", JSON.stringify(userArray));
+                    var user = JSON.parse(localStorage.getItem('user(' + sessionStorage.clickcount + ')'));
+                    var fname = user.name;
+                    var email = user.email;
+                    var phone = user.phone;
+                    var password = user.password;
+                    var address = user.address;
+                    var date = user.date;
+                    var accnt = user.accnt;
+
+                    createTable(fname, phone, email, address, date, accnt, password);
+
 
                 } else {
                     sessionStorage.clickcount = 1;
                     localStorage.setItem("user(" + sessionStorage.clickcount + ")", JSON.stringify(userArray));
+                    var user = JSON.parse(localStorage.getItem('user(' + sessionStorage.clickcount + ')'));
+                    var fname = user.name;
+                    var email = user.email;
+                    var phone = user.phone;
+                    var password = user.password;
+                    var address = user.address;
+                    var date = user.date;
+                    var accnt = user.accnt;
 
+                    createTable(fname, phone, email, address, date, accnt, password);
                 }
 
             } else {
@@ -183,18 +204,26 @@
 
 
 
-            for (var i = 1; i <= sessionStorage.clickcount; i++) {
+            // for (var i = 1; i <= sessionStorage.clickcount; i++) {
 
-                var user=JSON.parse(localStorage.getItem('user('+i+')'));
-                console.log(user.name);
-                    
-                    
-                        //console.log( user[key][1])
-                    
-                    
-                
-            
-        }
+            //   var user = JSON.parse(localStorage.getItem('user(' + i + ')'));
+            // var fname = user.name;
+            //var email = user.email;
+            //var phone = user.phone;
+            //var password = user.password;
+            //var address = user.address;
+            //var date = user.date;
+            //var accnt = user.accnt;
+
+            // createTable(fname, phone, email, address, date, accnt, password);
+
+
+            //console.log( user[key][1])
+
+
+
+
+            // }
 
             //const userDT = JSON.stringify(Object.assign({},userData));
         }
@@ -211,53 +240,6 @@
     </script>
 
 
-    <!-- Styling Table -->
-    <style>
-        #kt-datatable {
-            border: 1px solid black;
-            font-size: 12px;
-            font-family: Arial;
-        }
-
-        #kt-datatable th {
-            background: #007bff;
-            padding: 10px;
-            color: white;
-        }
-
-        #kt-datatable td {
-            padding: 10px;
-        }
-
-        .current-row {
-            background-color: coral;
-        }
-
-        .current-col {
-            /* background-color: cyan; */
-        }
-    </style>
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.table-row').hover(function () {
-                $(this).addClass('current-row');
-            },
-                function () {
-                    $(this).removeClass('current-row');
-                });
-
-            $("th").hover(function () {
-                var index = $(this).index();
-                $("th.table-header, td").filter(":nth-child(" + (index + 1) + ")")
-                    .addClass("current-col");
-            }, function () {
-                var index = $(this).index();
-                $("th.table-header, td").removeClass("current-col");
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -472,6 +454,54 @@
         </div>
     </footer>
     <!-- //Footer Section -->
+    
+    <!-- Styling Table -->
+    <style>
+        #kt-datatable {
+            border: 1px solid black;
+            font-size: 12px;
+            font-family: Arial;
+        }
+
+        #kt-datatable th {
+            background: #007bff;
+            padding: 10px;
+            color: white;
+        }
+
+        #kt-datatable td {
+            padding: 10px;
+        }
+
+        .current-row {
+            background-color: coral;
+        }
+
+        .current-col {
+            /* background-color: cyan; */
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.table-row').hover(function () {
+                $(this).addClass('current-row');
+            },
+                function () {
+                    $(this).removeClass('current-row');
+                });
+
+            $("th").hover(function () {
+                var index = $(this).index();
+                $("th.table-header, td").filter(":nth-child(" + (index + 1) + ")")
+                    .addClass("current-col");
+            }, function () {
+                var index = $(this).index();
+                $("th.table-header, td").removeClass("current-col");
+            });
+        });
+    </script>
     < </body>
 
 </html>
