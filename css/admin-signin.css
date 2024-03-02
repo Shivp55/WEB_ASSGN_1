@@ -190,16 +190,16 @@ li.dropdown {
     font-weight: 400;
 }
 
-.wrapper  {
+.wrapper {
     margin-left: 5px;
     line-height: 90px;
     height: 90px;
     /* overflow: hidden; */
 
 }
-.dynamic-txts{
 
-}
+.dynamic-txts {}
+
 .dynamic-txts li {
     list-style: none;
     color: rgb(252, 209, 131);
@@ -352,7 +352,7 @@ input:valid~label {
 .register {
     font-size: .9em;
     color: #fff;
-    text-align:justify;
+    text-align: justify;
     margin: 25px 0 5px;
 }
 

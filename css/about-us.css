@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 /* declaring the universal font as poppins */
 body {
     font-family: 'Poppins', sans-serif;
@@ -21,6 +22,7 @@ body {
 .logo-img {
     display: flex;
 }
+
 /* Setting height and width of logo */
 .logo img {
     height: 40px;
@@ -58,6 +60,7 @@ body {
     border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
+
 /* navigation bar button dropdown */
 .nav-bar>button {
     padding: 12px 28px;
@@ -83,7 +86,8 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;}
+    overflow: hidden;
+}
 
 li {
     float: left;
@@ -157,29 +161,35 @@ li.dropdown {
     align-items: flex-start;
     justify-content: space-evenly;
 }
-.phone-img img{
+
+.phone-img img {
     height: 300px;
     width: 500px;
 }
 
-.about-info-text{
+.about-info-text {
     height: 300px;
 }
-.investment-options{
+
+.investment-options {
     margin: 20px 20px 20px;
     font-size: 20px;
 }
-.investment-options ul li{
+
+.investment-options ul li {
     margin-top: 15px;
 }
-.investment-options ul{
-    list-style:disc;
+
+.investment-options ul {
+    list-style: disc;
 }
-.investment-options ul li>p{
+
+.investment-options ul li>p {
     font-size: 900;
     font-weight: 500;
 }
-.options p{
+
+.options p {
     ont-size: 900;
     font-weight: 400;
 }

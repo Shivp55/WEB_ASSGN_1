@@ -139,6 +139,9 @@ li.dropdown {
     display: block;
 }
 
+/* Body Section  */
+/* Middle Container Containing images  */
+
 #middle-container {
 
     /* background-color: #003251; */
@@ -171,7 +174,7 @@ li.dropdown {
     padding: 10px 10px;
 }
 
-
+/* footer  */
 .footer {
     border-top: 10px solid black;
     border-bottom: 10px solid black;

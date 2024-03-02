@@ -2,21 +2,268 @@
 <html lang="en">
 
 <head>
+    <!-- Meta tags for character set and viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to external CSS files -->
     <link rel="stylesheet" href="./css/user-signup.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SocialIcons/1.0.1/soc.min.css">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="./img/favicon-32x32.png">
+
+    <!-- Preconnect links for fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./js/localStorage.js"></script>
+    <script src="js\datatables\jquery.dataTables.min.js"></script>
+    <!-- Title of the page -->
     <title>Customer SignUp</title>
+    <script>
+        function validate_form(event) {
+            event.preventDefault();
+            var i;
+            var fname = document.getElementById("fname");
+            var mname = document.getElementById("mname");
+            var lname = document.getElementById('lname');
+            var email = document.getElementById('emailid');
+            var password = document.getElementById('password');
+            var address = document.getElementById('address');
+            var phone = document.getElementById('phone');
+            var accnt = document.getElementById('selectaccnt');
+
+            //function check names
+            if (fname.value == null || fname.value == "") {
+                alert("Please enter a valid first name");
+                document.getElementById('firstname').style.borderColor = "red"
+                fname.focus();
+                return false;
+            }
+            else {
+                document.getElementById('firstname').style.borderColor = "green"
+            }
+            if (mname.value == null || mname.value == "") {
+                alert("Please enter a valid middle name");
+                document.getElementById('middlename').style.borderColor = "red"
+                mname.focus();
+                return false;
+            }
+            else {
+                document.getElementById('middlename').style.borderColor = "green"
+            }
+            if (lname.value == null || lname.value == "") {
+                alert("Please enter a valid last name");
+                document.getElementById('lastname').style.borderColor = "red"
+                lname.focus();
+                return false;
+            }
+            else {
+                document.getElementById('lastname').style.borderColor = "green"
+            }
+
+            //Validating Select box
+            if (accnt.selectedIndex == 0) {
+                alert("Please select Account Type");
+                document.getElementById('selectaccnt').style.borderColor = "red"
+                accnt.focus();
+                return false;
+            }
+            else {
+                document.getElementById('selectaccnt').style.borderColor = "green"
+            }
+            // Validating phone number
+            if (phone.value.length < 1 || phone.value.length > 10) {
+                alert("Invalid phone number");
+                document.getElementById('ph.no').style.borderColor = "red"
+                phone.focus();
+                return false;
+            } else {
+                document.getElementById('ph.no').style.borderColor = "green"
+            }
+
+            var pwd = password.value;
+            //Validating Password
+            if (pwd.length === 0) {
+                alert("You must enter a valid password");
+                document.getElementById('pwd').style.borderColor = "red"
+                password.focus();
+                return false;
+            }
+            else {
+                document.getElementById('pwd').style.borderColor = "green"
+            }
+            if (pwd.length < 6) {
+                alert("Length of Password must be greater than 6 characters");
+                document.getElementById('pwd').style.borderColor = "red"
+                password.focus();
+                return false;
+            }
+            else {
+                document.getElementById('pwd').style.borderColor = "green"
+
+            }
+
+            //Validating Address
+            if (address.value == null || address.value == "") {
+                alert("Please enter a valid address");
+                document.getElementById('addr').style.borderColor = "red"
+                address.focus();
+                return false;
+            }
+            else {
+                document.getElementById('addr').style.borderColor = "green"
+            }
+            ValidateEmail();
+            
+            alert("All fields are valid");
+            storeData();
+        }
+
+        //Validating email
+        function ValidateEmail(mail) {
+            var mail = document.getElementById("emailid");
+            //alert(mail.value);
+
+            const emailRegex = /^[\w.-]+@[A-Za-z\d.-]+\.[A-Za-z]{2,}$/;
+            if (emailRegex.test(mail.value)) {
+                return true;
+            }
+            else {
+                alert('invalid email');
+                document.getElementById('email').style.borderColor = "red"
+                mail.focus();
+                return false;
+            }
+        }
+
+        function storeData() {
+            var fname = document.getElementById("fname");
+            var mname = document.getElementById("mname");
+            var lname = document.getElementById('lname');
+            var email = document.getElementById('emailid');
+            var password = document.getElementById('password');
+            var address = document.getElementById('address');
+            var phone = document.getElementById('phone');
+            var accnt = document.getElementById('selectaccnt');
+            var dt = document.getElementById('date');
+            // fname=fname.value;
+            // console.log(fname);
+
+            const userArray = {
+                "name": fname.value + " " + mname.value + " " + lname.value,
+                'email': email.value,
+                'password': password.value,
+                'phone': phone.value,
+                'address': address.value,
+                'date': date.value,
+                'accnt': accnt.value
+            }
+
+            if (typeof (Storage) !== "undefined") {
+                if (sessionStorage.clickcount) {
+                    sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+                    localStorage.setItem("user(" + sessionStorage.clickcount + ")", JSON.stringify(userArray));
+
+                } else {
+                    sessionStorage.clickcount = 1;
+                    localStorage.setItem("user(" + sessionStorage.clickcount + ")", JSON.stringify(userArray));
+
+                }
+
+            } else {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+
+
+
+            for (var i = 1; i <= sessionStorage.clickcount; i++) {
+
+                var user=JSON.parse(localStorage.getItem('user('+i+')'));
+                console.log(user.name);
+                    
+                    
+                        //console.log( user[key][1])
+                    
+                    
+                
+            
+        }
+
+            //const userDT = JSON.stringify(Object.assign({},userData));
+        }
+        //Show/Hide Password
+        function show_Hide(check_box) {
+            var val = document.getElementById("password");
+            if (check_box.checked) {
+                val.setAttribute("type", 'text');
+            }
+            else {
+                val.setAttribute("type", 'password');
+            }
+        }
+    </script>
+
+
+    <!-- Styling Table -->
+    <style>
+        #kt-datatable {
+            border: 1px solid black;
+            font-size: 12px;
+            font-family: Arial;
+        }
+
+        #kt-datatable th {
+            background: #007bff;
+            padding: 10px;
+            color: white;
+        }
+
+        #kt-datatable td {
+            padding: 10px;
+        }
+
+        .current-row {
+            background-color: coral;
+        }
+
+        .current-col {
+            /* background-color: cyan; */
+        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.table-row').hover(function () {
+                $(this).addClass('current-row');
+            },
+                function () {
+                    $(this).removeClass('current-row');
+                });
+
+            $("th").hover(function () {
+                var index = $(this).index();
+                $("th.table-header, td").filter(":nth-child(" + (index + 1) + ")")
+                    .addClass("current-col");
+            }, function () {
+                var index = $(this).index();
+                $("th.table-header, td").removeClass("current-col");
+            });
+        });
+    </script>
 </head>
 
 <body>
+    <!-- Header Section -->
     <header>
+        <!-- Logo and Contact Information -->
         <div class="logo">
             <div class="logo-img"><a href="./index.html">
                     <img src="./img/logo citi.jpg" alt=""></a>
@@ -27,12 +274,15 @@
                 <p><i class="fa fa-envelope-o"></i> shaishavparekh23@gmail.com</p>
             </div>
         </div>
+        <!-- Navigation Bar -->
         <nav class="nav-bar">
             <div class="nav-items">
                 <ul>
+                    <!-- Navigation Links -->
                     <li><a href="./index.html">Home</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropbtn">Customer</a>
+                        <!-- Dropdown Menu for Customer Options -->
                         <div class="dropdown-content">
                             <a href="./user-signin.html">Login</a>
                             <a href="./user-signup.html">Create Account </a>
@@ -44,95 +294,120 @@
                     <li><a href="./gallery.html">Gallery</a></li>
                 </ul>
             </div>
-            <button>Customer Login</button>
+            <!-- Button for User Login -->
+            <button>User Login</button>
         </nav>
     </header>
+    <!-- //Header Section -->
+
+    <!-- Banner Section -->
     <section class="banner">
         <div class="banner-box">
             <div class="banner-box-container">
                 <h1>Create An Account</h1>
             </div>
 
+            <!-- Typewriter Effect for Instruction -->
             <div class="typewriter">
                 <h1>Please Create An Account By Filling The Form Below</h1>
             </div>
+            <!--Create Account Form -->
             <div class="form-box">
-                <form action="CustomerController" method="post" class="form-box">
-
+                <form name="signin_form" id="signin_form" class="form-box" onsubmit="return validate_form(event);">
                     <table>
-                        <tr>
-                            <td colspan="3">&nbsp;</td>
-                        </tr>
+
                         <tr>
                             <td>
-                                <div class="inputbox">
+                                <!-- Input for First Name -->
+                                <div class="inputbox" id="firstname">
                                     <ion-icon name="mail-outline"></ion-icon>
-                                    <input type="text" id="fname" name="fname" required>
+                                    <input type="text" id="fname" name="fname">
                                     <label for="">First Name</label>
+
                                 </div>
+                                <!-- <span id="fname_validate" style="font-size: 12px ; color:red; font-weight:600; margin-top:16px;"></span> -->
+
                             </td>
                             <td>
-                                <div class="inputbox">
+                                <!-- Input for Middle Name -->
+                                <div class="inputbox" id="middlename">
                                     <ion-icon name="mail-outline"></ion-icon>
-                                    <input type="text" id="mname" name="mname" required>
+                                    <input type="text" id="mname" name="mname">
                                     <label for="">Middle Name</label>
                                 </div>
+
                             </td>
                             <td>
-                                <div class="inputbox">
+                                <!-- Input for Last Name -->
+                                <div class="inputbox" id="lastname">
                                     <ion-icon name="mail-outline"></ion-icon>
-                                    <input type="text" id="lname" name="lname" required>
+                                    <input type="text" id="lname" name="lname">
                                     <label for="">Last Name</label>
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td colspan="3">&nbsp;</td>
-                        </tr>
+
                         <tr>
                             <td>
-                                <select id="select" onchange="select();" name="selectaccnt"
+                                <!-- Dropdown for Account Type -->
+                                <select id="selectaccnt" name="selectaccnt"
                                     style="background-color: transparent; color:white; border:2px solid white;">
-                                    <option selected>Open this select menu</option>
+                                    <option selected>Type of Account</option>
                                     <option>Current</option>
                                     <option>Savings</option>
                                     <option>Fixed Deposit Account</option>
                                 </select>
                             </td>
                             <td>
-                                <div class="inputbox">
+                                <!-- Input Email -->
+                                <div class="inputbox" id="email">
                                     <ion-icon name="mail-outline"></ion-icon>
-                                    <input type="email" id="email" name="email" required>
+                                    <input type="text" id="emailid" name="email">
                                     <label for="">Email</label>
                                 </div>
                             </td>
                             <td>
-                                <div class="inputbox">
+                                <!-- Input Phone Number -->
+                                <div class="inputbox" id="ph.no">
                                     <ion-icon name="mail-outline"></ion-icon>
-                                    <input type="text" id="phone" name="phone" required>
+                                    <input type="text" id="phone" name="phone">
                                     <label for="">Number</label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2">
+                            <td>
+                                <!-- Input DOB -->
                                 <div class="inputbox">
                                     <ion-icon name="mail-outline"></ion-icon>
-                                    <input type="text" name="address" id="address" required>
-                                    <label for="">Address</label>
+                                    <input type="date" id="date" name="date" required>
+                                    <label for="">Date of Birth</label>
                                 </div>
                             </td>
                             <td>
-                                <div class="inputbox">
+                                <!-- Input Address -->
+                                <div class="inputbox" id="addr">
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <input type="text" name="address" id="address">
+                                    <label for="">Address</label>
+                                </div>
+                                <span id="erroradd" style="color:red;"></span>
+                            </td>
+                            <td>
+                                <div class="inputbox" id="pwd">
                                     <ion-icon name="lock-closed-outline"></ion-icon>
-                                    <input type="password" name="password" id="password" required>
+                                    <input type="password" name="password" id="password">
                                     <label for="">Password</label>
                                 </div>
+                                <div class="forget">
+                                    <label for=""><input type="checkbox" value="1" name="chk_box"
+                                            onchange="show_Hide(this);">Show Password</label>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3"></td>
                         </tr>
+                        <!-- Submit Button -->
                         <tr>
                             <td></td>
                             <td><input type="hidden" name="action" value="register">
@@ -143,6 +418,7 @@
                         <tr>
                         </tr>
                     </table>
+                    <!-- Login link -->
                     <div class="register">
                         <p>Already have an account <a href="./user-signin.html">Login</a></p>
                     </div>
@@ -150,14 +426,38 @@
             </div>
         </div>
     </section>
+    <!-- //Banner Section -->
+
+    <!-- Data Table Section -->
+    <div class="card">
+        <div id="example">
+            <table id="kt-datatable" class="table table-striped table-bordered" width="100%">
+                <thead>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>DOB</th>
+                    <th>Account</th>
+                    <th>Password</th>
+
+                </thead>
+            </table>
+        </div>
+    </div>
+    </div>
+
+    <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-container">
+            <!-- Social Media Icons -->
             <div class="social-container">
                 <img src="./img/icon-facebook.svg" alt="">
                 <img src="./img/icon-instagram.svg" alt="">
                 <img src="./img/icon-twitter.svg" alt="">
                 <img src="./img/icon-pinterest.svg" alt="">
             </div>
+            <!-- Footer Menu Links -->
             <div class="menu">
                 <a href="./about-us.html">About Us</a>
                 <a href="./contact-us.html">Contact Us</a>
@@ -168,9 +468,10 @@
                 <a href="#">Support</a>
                 <a href="#">Privacy Policy</a>
             </div>
-            <button>Customer Login</button>
+            <button>User Login</button>
         </div>
     </footer>
-</body>
+    <!-- //Footer Section -->
+    < </body>
 
 </html>

@@ -1,13 +1,16 @@
+/* Setting initial margin and padding to zero  */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Applying universal font as poppins */
 body {
     font-family: 'Poppins', sans-serif;
 }
 
+/* Upper Navigation Bar  */
 .logo {
     margin: 20px;
     display: flex;
@@ -40,6 +43,7 @@ body {
     margin-left: 20px;
 }
 
+/* Lower Navigation Bar  */
 .nav-bar {
     display: flex;
     justify-content: space-around;
@@ -55,6 +59,7 @@ body {
     border-bottom: 1px solid black;
 }
 
+/* navbar button style  */
 .nav-bar>button {
     padding: 12px 28px;
     border: 2px solid black;
@@ -87,6 +92,7 @@ li {
     float: left;
 }
 
+/* Dropdown content in Navigation design  */
 li a,
 .dropbtn {
     display: inline-block;
@@ -102,6 +108,7 @@ li a {
     font-style: normal;
 }
 
+/* Defining background color of the dropback menu on hover function over 'a' tag*/
 li a:hover,
 .dropdown:hover .dropbtn {
     background-color: #142340;
@@ -139,6 +146,7 @@ li.dropdown {
     display: block;
 }
 
+/* Banner Section  */
 .banner {
     display: flex;
     background: url('../img/back-6.jpg');
@@ -178,28 +186,29 @@ li.dropdown {
     line-height: 1.1;
 }
 
+/* Applying Animation to text */
 .wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Applying style to the unanimated text  */
 .wrapper .static-txt {
     color: #fff;
     font-size: 40px;
     font-weight: 400;
 }
 
-.wrapper  {
+
+.wrapper {
     margin-left: 5px;
     line-height: 90px;
     height: 90px;
     /* overflow: hidden; */
 
 }
-.dynamic-txts{
 
-}
 .dynamic-txts li {
     list-style: none;
     color: rgb(252, 209, 131);
@@ -210,6 +219,7 @@ li.dropdown {
     animation: slide 5s steps(4) infinite;
 }
 
+/* The slider effect */
 @keyframes slide {
     100% {
         top: -360px;
@@ -229,6 +239,7 @@ li.dropdown {
     animation: typing 5s steps(12) infinite;
 }
 
+/* Typing Effect */
 @keyframes typing {
 
     40%,
@@ -241,8 +252,9 @@ li.dropdown {
     }
 }
 
+/* Form Designing */
 .form-box {
-    margin-left:20%;
+    margin-left: 20%;
     position: relative;
     width: 400px;
     height: 450px;
@@ -255,18 +267,20 @@ li.dropdown {
     align-items: center;
 
 }
-
+/* Setting hover property for form  */
 .form-box:hover {
     background-color: #54a629;
     color: black;
 }
 
+/* Styling h2 tag inside form-box  */
 h2 {
     font-size: 2em;
     color: #fff;
     text-align: center;
 }
 
+/* Styling the input boxes for email, name and number setting a width */
 .inputbox {
     position: relative;
     margin: 30px 0;
@@ -274,6 +288,7 @@ h2 {
     border-bottom: 2px solid #fff;
 }
 
+/* Styling and Traslating the label to move 50% top on click */
 .inputbox label {
     position: absolute;
     top: 50%;
@@ -352,7 +367,7 @@ input:valid~label {
 .register {
     font-size: .9em;
     color: #fff;
-    text-align:justify;
+    text-align: justify;
     margin: 25px 0 5px;
 }
 
@@ -366,6 +381,7 @@ input:valid~label {
     text-decoration: underline;
 }
 
+/* footer  */
 .footer {
     border-top: 10px solid black;
     border-bottom: 10px solid black;
