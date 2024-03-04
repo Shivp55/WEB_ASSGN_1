@@ -138,6 +138,16 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+/* Sticky Navigation Bar */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky+.banner {
+    padding-top: 60px;
+}
 
 /* Body Section  */
 /* Middle Container Containing images  */

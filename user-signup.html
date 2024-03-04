@@ -9,236 +9,67 @@
     <!-- Link to external CSS files -->
     <link rel="stylesheet" href="./css/user-signup.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/SocialIcons/1.0.1/soc.min.css">
-
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="./img/favicon-32x32.png">
-
+    <!-- Jquery Swal fire -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Preconnect links for fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./js/localStorage.js"></script>
+    <!-- Data Tables -->
     <script src="js\datatables\jquery.dataTables.min.js"></script>
+    <!-- Local Storage -->
+    <script src="./js/localStorage.js"></script>
+    <!-- Table -->
     <script src="js\table.js"></script>
+    <!-- Form Validation -->
+    <script src="js\formValidation.js"></script>
+
     <!-- Title of the page -->
     <title>Customer SignUp</title>
+    <style>
+        #message {
+            display: none;
+            background: #f1f1f1;
+
+        }
+
+        #message span {
+            padding: 10px 10px;
+            font-size: 12px;
+        }
+
+        /* Add a green text color and a checkmark when the requirements are right */
+        .valid {
+            color: green;
+        }
+
+        .valid:before {
+            position: relative;
+            left: -5px;
+            content: "✔";
+        }
+
+        /* Add a red text color and an "x" when the requirements are wrong */
+        .invalid {
+            color: red;
+        }
+
+        .invalid:before {
+            position: relative;
+            left: -5px;
+            content: "✖";
+        }
+    </style>
     <script>
-        function validate_form(event) {
-            event.preventDefault();
-            var i;
-            var fname = document.getElementById("fname");
-            var mname = document.getElementById("mname");
-            var lname = document.getElementById('lname');
-            var email = document.getElementById('emailid');
-            var password = document.getElementById('password');
-            var address = document.getElementById('address');
-            var phone = document.getElementById('phone');
-            var accnt = document.getElementById('selectaccnt');
-
-            //function check names
-            if (fname.value == null || fname.value == "") {
-                alert("Please enter a valid first name");
-                document.getElementById('firstname').style.borderColor = "red"
-                fname.focus();
-                return false;
-            }
-            else {
-                document.getElementById('firstname').style.borderColor = "green"
-            }
-            if (mname.value == null || mname.value == "") {
-                alert("Please enter a valid middle name");
-                document.getElementById('middlename').style.borderColor = "red"
-                mname.focus();
-                return false;
-            }
-            else {
-                document.getElementById('middlename').style.borderColor = "green"
-            }
-            if (lname.value == null || lname.value == "") {
-                alert("Please enter a valid last name");
-                document.getElementById('lastname').style.borderColor = "red"
-                lname.focus();
-                return false;
-            }
-            else {
-                document.getElementById('lastname').style.borderColor = "green"
-            }
-
-            //Validating Select box
-            if (accnt.selectedIndex == 0) {
-                alert("Please select Account Type");
-                document.getElementById('selectaccnt').style.borderColor = "red"
-                accnt.focus();
-                return false;
-            }
-            else {
-                document.getElementById('selectaccnt').style.borderColor = "green"
-            }
-            // Validating phone number
-            if (phone.value.length < 1 || phone.value.length > 10) {
-                alert("Invalid phone number");
-                document.getElementById('ph.no').style.borderColor = "red"
-                phone.focus();
-                return false;
-            } else {
-                document.getElementById('ph.no').style.borderColor = "green"
-            }
-
-            var pwd = password.value;
-            //Validating Password
-            if (pwd.length === 0) {
-                alert("You must enter a valid password");
-                document.getElementById('pwd').style.borderColor = "red"
-                password.focus();
-                return false;
-            }
-            else {
-                document.getElementById('pwd').style.borderColor = "green"
-            }
-            if (pwd.length < 6) {
-                alert("Length of Password must be greater than 6 characters");
-                document.getElementById('pwd').style.borderColor = "red"
-                password.focus();
-                return false;
-            }
-            else {
-                document.getElementById('pwd').style.borderColor = "green"
-
-            }
-
-            //Validating Address
-            if (address.value == null || address.value == "") {
-                alert("Please enter a valid address");
-                document.getElementById('addr').style.borderColor = "red"
-                address.focus();
-                return false;
-            }
-            else {
-                document.getElementById('addr').style.borderColor = "green"
-            }
-            ValidateEmail();
-
-            alert("All fields are valid");
-            storeData();
-        }
-
-        //Validating email
-        function ValidateEmail(mail) {
-            var mail = document.getElementById("emailid");
-            //alert(mail.value);
-
-            const emailRegex = /^[\w.-]+@[A-Za-z\d.-]+\.[A-Za-z]{2,}$/;
-            if (emailRegex.test(mail.value)) {
-                return true;
-            }
-            else {
-                alert('invalid email');
-                document.getElementById('email').style.borderColor = "red"
-                mail.focus();
-                return false;
-            }
-        }
-
-        function storeData() {
-            var fname = document.getElementById("fname");
-            var mname = document.getElementById("mname");
-            var lname = document.getElementById('lname');
-            var email = document.getElementById('emailid');
-            var password = document.getElementById('password');
-            var address = document.getElementById('address');
-            var phone = document.getElementById('phone');
-            var accnt = document.getElementById('selectaccnt');
-            var dt = document.getElementById('date');
-            // fname=fname.value;
-            // console.log(fname);
-
-            const userArray = {
-                "name": fname.value + " " + mname.value + " " + lname.value,
-                'email': email.value,
-                'password': password.value,
-                'phone': phone.value,
-                'address': address.value,
-                'date': dt.value,
-                'accnt': accnt.value
-            }
-
-            if (typeof (Storage) !== "undefined") {
-                if (sessionStorage.clickcount) {
-                    sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
-                    localStorage.setItem("user(" + sessionStorage.clickcount + ")", JSON.stringify(userArray));
-                    var user = JSON.parse(localStorage.getItem('user(' + sessionStorage.clickcount + ')'));
-                    var fname = user.name;
-                    var email = user.email;
-                    var phone = user.phone;
-                    var password = user.password;
-                    var address = user.address;
-                    var date = user.date;
-                    var accnt = user.accnt;
-
-                    createTable(fname, phone, email, address, date, accnt, password);
-
-
-                } else {
-                    sessionStorage.clickcount = 1;
-                    localStorage.setItem("user(" + sessionStorage.clickcount + ")", JSON.stringify(userArray));
-                    var user = JSON.parse(localStorage.getItem('user(' + sessionStorage.clickcount + ')'));
-                    var fname = user.name;
-                    var email = user.email;
-                    var phone = user.phone;
-                    var password = user.password;
-                    var address = user.address;
-                    var date = user.date;
-                    var accnt = user.accnt;
-
-                    createTable(fname, phone, email, address, date, accnt, password);
-                }
-
-            } else {
-                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
-            }
-
-
-
-            // for (var i = 1; i <= sessionStorage.clickcount; i++) {
-
-            //   var user = JSON.parse(localStorage.getItem('user(' + i + ')'));
-            // var fname = user.name;
-            //var email = user.email;
-            //var phone = user.phone;
-            //var password = user.password;
-            //var address = user.address;
-            //var date = user.date;
-            //var accnt = user.accnt;
-
-            // createTable(fname, phone, email, address, date, accnt, password);
-
-
-            //console.log( user[key][1])
-
-
-
-
-            // }
-
-            //const userDT = JSON.stringify(Object.assign({},userData));
-        }
-        //Show/Hide Password
-        function show_Hide(check_box) {
-            var val = document.getElementById("password");
-            if (check_box.checked) {
-                val.setAttribute("type", 'text');
-            }
-            else {
-                val.setAttribute("type", 'password');
-            }
-        }
+        
     </script>
-
 
 </head>
 
@@ -246,39 +77,9 @@
     <!-- Header Section -->
     <header>
         <!-- Logo and Contact Information -->
-        <div class="logo">
-            <div class="logo-img"><a href="./index.html">
-                    <img src="./img/logo citi.jpg" alt=""></a>
-                <p>Bank</p>
-            </div>
-            <div class="logo-contacts">
-                <p><i class="fa fa-phone"></i> +353899636097</p>
-                <p><i class="fa fa-envelope-o"></i> shaishavparekh23@gmail.com</p>
-            </div>
-        </div>
-        <!-- Navigation Bar -->
-        <nav class="nav-bar">
-            <div class="nav-items">
-                <ul>
-                    <!-- Navigation Links -->
-                    <li><a href="./index.html">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropbtn">Customer</a>
-                        <!-- Dropdown Menu for Customer Options -->
-                        <div class="dropdown-content">
-                            <a href="./user-signin.html">Login</a>
-                            <a href="./user-signup.html">Create Account </a>
-                        </div>
-                    </li>
-                    <li><a href="./admin-signin.html">Admin</a></li>
-                    <li><a href="./about-us.html">About</a></li>
-                    <li><a href="./contact-us.html">Contact Us</a></li>
-                    <li><a href="./gallery.html">Gallery</a></li>
-                </ul>
-            </div>
-            <!-- Button for User Login -->
-            <button>User Login</button>
-        </nav>
+        <!-- Nav bar -->
+        <script src="./js/responsive_navbar.js"></script>
+        <!-- //Nav Bar -->
     </header>
     <!-- //Header Section -->
 
@@ -288,16 +89,14 @@
             <div class="banner-box-container">
                 <h1>Create An Account</h1>
             </div>
-
             <!-- Typewriter Effect for Instruction -->
             <div class="typewriter">
                 <h1>Please Create An Account By Filling The Form Below</h1>
             </div>
             <!--Create Account Form -->
             <div class="form-box">
-                <form name="signin_form" id="signin_form" class="form-box" onsubmit="return validate_form(event);">
+                <form name="signup_form" id="signup_form" class="form-box" onsubmit="return validate_form(event);">
                     <table>
-
                         <tr>
                             <td>
                                 <!-- Input for First Name -->
@@ -305,10 +104,8 @@
                                     <ion-icon name="mail-outline"></ion-icon>
                                     <input type="text" id="fname" name="fname">
                                     <label for="">First Name</label>
-
                                 </div>
                                 <!-- <span id="fname_validate" style="font-size: 12px ; color:red; font-weight:600; margin-top:16px;"></span> -->
-
                             </td>
                             <td>
                                 <!-- Input for Middle Name -->
@@ -317,7 +114,6 @@
                                     <input type="text" id="mname" name="mname">
                                     <label for="">Middle Name</label>
                                 </div>
-
                             </td>
                             <td>
                                 <!-- Input for Last Name -->
@@ -328,8 +124,53 @@
                                 </div>
                             </td>
                         </tr>
-
                         <tr>
+                            <td>
+                                <!-- Input  -->
+                                <div class="form_radio">
+                                    <span>Gender:&nbsp;</span>
+                                    <label class="radio_btn">Male
+                                        <input type="radio" name="radio" id="male" value="male" checked="checked">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="radio_btn">Female
+                                        <input type="radio" name="radio" id="female" value="female">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="radio_btn">Others
+                                        <input type="radio" name="radio" id="others" value="others">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <!-- Input DOB -->
+                                <div class="inputbox">
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <input type="date" id="date" name="date" required>
+                                    <label for="">Date of Birth</label>
+                                </div>
+                            </td>
+                            <td>
+                                <!-- Input Phone Number -->
+                                <div class="inputbox" id="ph.no">
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <input type="text" id="phone" name="phone">
+                                    <label for="">Number</label>
+                                </div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <!-- Input Email -->
+                                <div class="inputbox" id="email">
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <input type="text" id="emailid" name="email">
+                                    <label for="">Email</label>
+                                </div>
+
+                            </td>
                             <td>
                                 <!-- Dropdown for Account Type -->
                                 <select id="selectaccnt" name="selectaccnt"
@@ -341,49 +182,53 @@
                                 </select>
                             </td>
                             <td>
-                                <!-- Input Email -->
-                                <div class="inputbox" id="email">
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <input type="text" id="emailid" name="email">
-                                    <label for="">Email</label>
-                                </div>
-                            </td>
-                            <td>
-                                <!-- Input Phone Number -->
-                                <div class="inputbox" id="ph.no">
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <input type="text" id="phone" name="phone">
-                                    <label for="">Number</label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <!-- Input DOB -->
-                                <div class="inputbox">
-                                    <ion-icon name="mail-outline"></ion-icon>
-                                    <input type="date" id="date" name="date" required>
-                                    <label for="">Date of Birth</label>
-                                </div>
-                            </td>
-                            <td>
                                 <!-- Input Address -->
                                 <div class="inputbox" id="addr">
                                     <ion-icon name="mail-outline"></ion-icon>
                                     <input type="text" name="address" id="address">
                                     <label for="">Address</label>
                                 </div>
-                                <span id="erroradd" style="color:red;"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <!-- Input Postal Code -->
+                                <div class="inputbox" id="poc">
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                    <input type="text" name="post" id="post">
+                                    <label for="">Postal Code</label>
+                                </div>
                             </td>
                             <td>
+                                <!-- Password -->
                                 <div class="inputbox" id="pwd">
                                     <ion-icon name="lock-closed-outline"></ion-icon>
-                                    <input type="password" name="password" id="password">
+                                    <input type="password" name="password" id="password"
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                                        required>
                                     <label for="">Password</label>
                                 </div>
                                 <div class="forget">
                                     <label for=""><input type="checkbox" value="1" name="chk_box"
                                             onchange="show_Hide(this);">Show Password</label>
+                                </div>
+                                <div id="message">
+                                    <span id="letter" class="invalid">A <b>lowercase</b> letter</span>
+                                    <span id="capital" class="invalid">A <b>capital (uppercase)</b> letter</span>
+                                    <span id="number" class="invalid">A <b>number</b></span>
+                                    <span id="length" class="invalid">Minimum <b>8 characters</b></span>
+                                    <!-- <label for="">Password</label> -->
+                                </div>
+                            </td>
+                            <td>
+                                <!-- Confirm Password -->
+                                <div class="inputbox" id="pwd">
+                                    <ion-icon name="lock-closed-outline"></ion-icon>
+                                    <input type="password" name="cfmpassword" id="cfmpassword">
+                                    <label for="">Confirm Password</label>
+                                </div>
+                                
                             </td>
                         </tr>
                         <tr>
@@ -391,19 +236,18 @@
                         </tr>
                         <!-- Submit Button -->
                         <tr>
-                            <td></td>
+                            <td><!-- Login link -->
+                                <div class="register">
+                                    <span>Already have an account <a href="./user-signin.html">Login</a></span>
+                                </div>
+                            </td>
                             <td><input type="hidden" name="action" value="register">
-                                <button type="submit">Create Account</button>
+                                <button type="submit" id="user_register" class="user_register">Create Account</button>
+
                             </td>
                             <td></td>
                         </tr>
-                        <tr>
-                        </tr>
                     </table>
-                    <!-- Login link -->
-                    <div class="register">
-                        <p>Already have an account <a href="./user-signin.html">Login</a></p>
-                    </div>
                 </form>
             </div>
         </div>
@@ -419,10 +263,11 @@
                     <th>Phone</th>
                     <th>Email</th>
                     <th>Address</th>
+                    <th>Postal Code</th>
                     <th>DOB</th>
+                    <th>Gender</th>
                     <th>Account</th>
                     <th>Password</th>
-
                 </thead>
             </table>
         </div>
@@ -454,8 +299,6 @@
         </div>
     </footer>
     <!-- //Footer Section -->
-    
-    <!-- Styling Table -->
     <style>
         #kt-datatable {
             border: 1px solid black;
@@ -481,27 +324,72 @@
             /* background-color: cyan; */
         }
     </style>
-    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.table-row').hover(function () {
-                $(this).addClass('current-row');
-            },
-                function () {
-                    $(this).removeClass('current-row');
-                });
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 
-            $("th").hover(function () {
-                var index = $(this).index();
-                $("th.table-header, td").filter(":nth-child(" + (index + 1) + ")")
-                    .addClass("current-col");
-            }, function () {
-                var index = $(this).index();
-                $("th.table-header, td").removeClass("current-col");
-            });
-        });
+    <script>
+
+
+        var myInput = document.getElementById("password");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function () {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function () {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function () {
+            // Validate lowercase letters
+            var lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            var upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            var numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        }
+
+
     </script>
+
     < </body>
 
 </html>

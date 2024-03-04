@@ -59,6 +59,7 @@ body {
             hsl(206.3, 46.5%, 69.22%));
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    z-index: 999;
 }
 
 /* Styling nav bar login Button  */
@@ -147,13 +148,24 @@ li.dropdown {
     display: block;
 }
 
+/* Sticky Navigation Bar */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky+.banner {
+    padding-top: 60px;
+}
+
 /* Banner Section  */
 .banner {
     display: flex;
     background: url('../img/back-6.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    /* height: 100vh; */
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
@@ -262,9 +274,9 @@ li.dropdown {
     margin-left: auto;
     position: relative;
     width: 1000px;
-    height: 525px;
+    /* height: 90%; */
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     backdrop-filter: blur(15px);
 }
@@ -286,7 +298,12 @@ h2 {
 }
 
 
-input[type='date']:in-range::-webkit-datetime-edit-year-field,input[type='date']:in-range::-webkit-datetime-edit-month-field,input[type='date']:in-range::-webkit-datetime-edit-day-field,input[type='date']:in-range::-webkit-datetime-edit-text{  color: transparent;}
+input[type='date']:in-range::-webkit-datetime-edit-year-field,
+input[type='date']:in-range::-webkit-datetime-edit-month-field,
+input[type='date']:in-range::-webkit-datetime-edit-day-field,
+input[type='date']:in-range::-webkit-datetime-edit-text {
+    color: transparent;
+}
 
 /* Adding style to input label to translate vertical when clicked */
 .inputbox label {
@@ -301,16 +318,93 @@ input[type='date']:in-range::-webkit-datetime-edit-year-field,input[type='date']
 }
 
 input:focus~label,
-input:user-valid~label
-{
+input:user-valid~label {
     top: -10px;
     color: white;
 }
-input[type='date']:focus~label,
-input[type='date']:valid~label
-{
+
+input[type='password']:valid~label {
     top: -10px;
     color: white;
+}
+
+
+
+input[type='date']:focus~label,
+input[type='date']:valid~label {
+    top: -10px;
+    color: white;
+}
+
+.form_radio {
+    color: #fff;
+    font-size: 1em;
+    margin: 5px 10px;
+
+}
+
+/* Radio Btn*/
+.radio_btn {
+    display: inline;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1em;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio_btn input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio_btn:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio_btn input:checked~.checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio_btn input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio_btn .checkmark:after {
+    top: 4px;
+    left: 3.5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
 }
 
 #selectaccnt {
@@ -350,6 +444,7 @@ input[type='date']:valid~label
     top: 20px;
 } */
 
+
 .forget {
     margin: -25px 0 15px 20px;
     font-size: .9em;
@@ -378,15 +473,21 @@ input[type='date']:valid~label
 }
 
 .form-box button {
+    margin-left: 25%;
     width: 50%;
     height: 40px;
     border-radius: 40px;
-    background: #f6c086;
+    background: #cfb1bb;
     border: none;
     outline: none;
     cursor: pointer;
-    font-weight: 900;
-    margin-left: 70px;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 10px 0;
+    box-shadow: 0 8px 5px -5px rgba(0, 0, 0, 0.2);
+    place-content: center;
+    transition: 0.2s;
+    margin-bottom: 8%;
 }
 
 .form-box button:hover {
@@ -394,29 +495,53 @@ input[type='date']:valid~label
     color: white;
 }
 
-.register {
-    font-size: .9em;
-    color: #fff;
-    text-align: center;
-    margin: 25px 0 10px;
+.loader {
+    margin-left: auto;
+    margin-right: auto;
+    pointer-events: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #fff;
+    animation: an1 1s ease infinite;
+
 }
 
-.register p a {
+@keyframes an1 {
+    0% {
+        transform: rotate(0turn)
+    }
+
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+.register {
+    font-size: 1.1em;
+    color: #fff;
+    text-align: center;
+    /* margin: 15px 20px; */
+}
+
+.register span a {
     text-decoration: none;
     color: #fff;
     font-weight: 600;
 }
 
-.register p a:hover {
+.register span a:hover {
     text-decoration: underline;
 }
 
+/* 
 .container {
     background-color: hsl(220, 16%, 96%);
-}
+} */
 
 .card {
-    margin:5% auto;
+    margin: 5% auto;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     width: 80%;
@@ -427,6 +552,34 @@ input[type='date']:valid~label
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+#kt-datatable tbody tr {
+    background-color: lightcyan;
+}
+
+#kt-datatable th {
+    background: #007bff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: white;
+}
+
+#kt-datatable tbody tr td {
+    font-size: 13px;
+    font-weight: 300;
+}
+
+#kt-datatable tr td {
+    border: 1px solid black;
+}
+
+#kt-datatable tr:hover {
+    background-color: green;
+    color: white;
+}
 
 
 /* footer  */

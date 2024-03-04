@@ -57,6 +57,7 @@ body {
             hsl(206.3, 46.5%, 69.22%));
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    z-index: 999;
 }
 
 .nav-bar>button {
@@ -141,6 +142,17 @@ li.dropdown {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+/* Sticky Navigation Bar */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky+.banner {
+    padding-top: 60px;
 }
 
 /* BAckground design of the index page. */
